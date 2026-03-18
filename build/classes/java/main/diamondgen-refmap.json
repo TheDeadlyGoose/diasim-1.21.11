@@ -1,0 +1,36 @@
+{
+  "mappings": {
+    "misterx/diamondgen/mixin/ClientPlayNetworkHandlerMixin": {
+      "<init>": "Lnet/minecraft/class_634;<init>(Lnet/minecraft/class_310;Lnet/minecraft/class_2535;Lnet/minecraft/class_8675;)V",
+      "handleCommands": "Lnet/minecraft/class_634;method_11145(Lnet/minecraft/class_2641;)V",
+      "handleLogin": "Lnet/minecraft/class_634;method_11120(Lnet/minecraft/class_2678;)V"
+    },
+    "misterx/diamondgen/mixin/ClientWorldMixin": {
+      "disconnect": "Lnet/minecraft/class_638;method_8525(Lnet/minecraft/class_2561;)V"
+    },
+    "misterx/diamondgen/mixin/DummyProfilerMixin": {
+      "pop": "Lnet/minecraft/class_3694;method_15407()V"
+    },
+    "misterx/diamondgen/mixin/GameRendererMixin": {
+      "renderLevel": "Lnet/minecraft/class_757;method_3188(Lnet/minecraft/class_9779;)V"
+    }
+  },
+  "data": {
+    "named:intermediary": {
+      "misterx/diamondgen/mixin/ClientPlayNetworkHandlerMixin": {
+        "<init>": "Lnet/minecraft/class_634;<init>(Lnet/minecraft/class_310;Lnet/minecraft/class_2535;Lnet/minecraft/class_8675;)V",
+        "handleCommands": "Lnet/minecraft/class_634;method_11145(Lnet/minecraft/class_2641;)V",
+        "handleLogin": "Lnet/minecraft/class_634;method_11120(Lnet/minecraft/class_2678;)V"
+      },
+      "misterx/diamondgen/mixin/ClientWorldMixin": {
+        "disconnect": "Lnet/minecraft/class_638;method_8525(Lnet/minecraft/class_2561;)V"
+      },
+      "misterx/diamondgen/mixin/DummyProfilerMixin": {
+        "pop": "Lnet/minecraft/class_3694;method_15407()V"
+      },
+      "misterx/diamondgen/mixin/GameRendererMixin": {
+        "renderLevel": "Lnet/minecraft/class_757;method_3188(Lnet/minecraft/class_9779;)V"
+      }
+    }
+  }
+}

@@ -1,0 +1,4 @@
+v1	named	intermediary
+FIELD	misterx/diamondgen/mixin/ClientPlayNetworkHandlerMixin	Lcom/mojang/brigadier/CommandDispatcher;	commands	field_3696
+FIELD	misterx/diamondgen/mixin/ClientPlayNetworkHandlerMixin	Lnet/minecraft/client/Minecraft;	minecraft	field_45588
+FIELD	misterx/diamondgen/mixin/DimensionTypeMixin	Ljava/lang/Object;	infiniburn	infiniburn
