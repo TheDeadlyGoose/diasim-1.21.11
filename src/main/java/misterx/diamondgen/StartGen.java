@@ -1,7 +1,5 @@
 package misterx.diamondgen;
 
-import kaptainwutax.biomeutils.Biome;
-import kaptainwutax.biomeutils.source.NetherBiomeSource;
 import kaptainwutax.seedutils.mc.MCVersion;
 import kaptainwutax.seedutils.mc.seed.ChunkSeeds;
 import net.minecraft.client.Minecraft;  // Changed
@@ -62,51 +60,37 @@ public class StartGen {
         }
     }
 
-    public void ancientDebris(int blockX, int blockZ) {
-        // For 1.21.11 Nether generation
-        MCVersion version = DiamondGen.ver.equals("1.16") ? MCVersion.v1_16_1 : MCVersion.v1_21;
-        NetherBiomeSource netherBiomeSource = new NetherBiomeSource(version, currentSeed);
-        
-        // Get biome at position
-        Biome biome = netherBiomeSource.getBiome(blockX + 8, 0, blockZ + 8);
-        
-        // Ancient debris decorator index varies by biome in modern versions
-        int index = 15; // Default
-        
-        if (biome != null) {
-            String biomeName = biome.getName();
-            if (biomeName.equals("warped_forest")) {
-                index = 13;
-            } else if (biomeName.equals("crimson_forest")) {
-                index = 12;
-            } else if (biomeName.equals("basalt_deltas")) {
-                index = 14; // Adjust based on 1.21.11 biome names
-            } else if (biomeName.equals("soul_sand_valley")) {
-                index = 11; // Adjust based on 1.21.11 biome names
-            }
-        }
-        
-        // First vein
-        long decSeed = ChunkSeeds.getDecoratorSeed(this.currentSeed, blockX, blockZ, index, 7, version);
-        Random random = new Random();
-        random.setSeed(decSeed);
+   public void ancientDebris(int blockX, int blockZ) {
+    MCVersion version = MCVersion.v1_21;
 
-        int x = random.nextInt(16) + blockX;
-        int z = random.nextInt(16) + blockZ;
-        
-        // Ancient debris generates between y=8-119 in modern versions
-        int y = 8 + random.nextInt(112);
-        BlockPos blockPos = new BlockPos(x, y, z);
-        simDebrisGen.generate(random, blockPos, 3);
+    // Ancient debris uses uniform decorators in modern versions
+    int decoratorStep = 7;
+    int decoratorIndex1 = 15;
+    int decoratorIndex2 = 16;
 
-        // Second vein (different index)
-        decSeed = ChunkSeeds.getDecoratorSeed(this.currentSeed, blockX, blockZ, index + 1, 7, version);
-        random.setSeed(decSeed);
+    Random random = new Random();
 
-        x = random.nextInt(16) + blockX;
-        z = random.nextInt(16) + blockZ;
-        y = 8 + random.nextInt(112);  // Updated range for 1.21.11
-        BlockPos blockPos1 = new BlockPos(x, y, z);
-        simDebrisGen.generate(random, blockPos1, 2);
-    }
+    // First vein
+    long seed1 = ChunkSeeds.getDecoratorSeed(
+            currentSeed, blockX, blockZ, decoratorIndex1, decoratorStep, version
+    );
+    random.setSeed(seed1);
+
+    int x = random.nextInt(16) + blockX;
+    int z = random.nextInt(16) + blockZ;
+    int y = 8 + random.nextInt(112); // y = 8–119
+
+    simDebrisGen.generate(random, new BlockPos(x, y, z), 3);
+
+    // Second vein
+    long seed2 = ChunkSeeds.getDecoratorSeed(
+            currentSeed, blockX, blockZ, decoratorIndex2, decoratorStep, version
+    );
+    random.setSeed(seed2);
+
+    x = random.nextInt(16) + blockX;
+    z = random.nextInt(16) + blockZ;
+    y = 8 + random.nextInt(112);
+
+    simDebrisGen.generate(random, new BlockPos(x, y, z), 2);
 }
